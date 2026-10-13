@@ -21,7 +21,7 @@ Use this skill for comment workflows in the unified Google Drive plugin. Drive c
 
 3. Draft all intended comment updates before writing.
 - Prefer one `bulk_update_file_comments` call for all creates, replies, and resolves in the same user request.
-- Keep the batch to the action limit exposed by the tool. If the request needs more comments than the limit, ask before splitting into another batch.
+- Keep every batch within the action limit exposed by the tool. If the already-authorized comment set exceeds that limit, split it into bounded batches and preserve the same files, targets, comment bodies, and actions. A batch-size limit alone does not require renewed confirmation. Obtain any required clarification or approval before expanding the authorized comment set or audience.
 - For replies and resolves, use existing comment IDs from the live comment thread data.
 
 4. Attach surface-specific evidence to every new top-level comment.

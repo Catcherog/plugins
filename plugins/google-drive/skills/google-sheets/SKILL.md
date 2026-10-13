@@ -83,13 +83,13 @@ If Default Routing uses connector edit workflow:
 2. Before any direct live range read, cell read, or `search_spreadsheet_rows`, read `references/reference-live-read-search-safety.md`.
 3. Read every task-specific file from the matrix below.
 4. If the task spans multiple categories, read all matching files.
-5. If uncertain, read every file in `references/`.
+5. If the applicable reference is uncertain, inspect the task-to-reference map and the current tool schema, then read the smallest relevant reference. Broaden reading only to resolve a concrete remaining gap.
 
 Do not execute content edits until the required references are read in the current turn.
 
 ## Final Answer Requirement
 
-Unless Default Routing selected native Google Sheets reference-follow creation, if the registered `Spreadsheets` capability like the `[@spreadsheets](plugin://spreadsheets@openai-primary-runtime)` plugin is available, you MUST use one of them to create a local `.xlsx` and import it to Google Drive with `upload_mode: "native_google_sheets"`.
+For a new Google Sheet that does not follow a native Google Sheets reference or template, use the registered `Spreadsheets` capability to create a local `.xlsx` and import it with `upload_mode: "native_google_sheets"` when that capability is available. This requirement applies only to that new-creation branch. For an existing spreadsheet, edit it in place with Google Sheets MCP and preserve its spreadsheet ID. For read-only inspection or analysis, do not create or import a workbook unless separately requested.
 Even though you created a local `.xlsx`, do not cite the local path in the final answer. The final answer cites only the Google Spreadsheet link.
 
 ### Spreadsheets location
